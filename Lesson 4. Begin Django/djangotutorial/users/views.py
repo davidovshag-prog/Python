@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 from .forms import CustomUserLoginForm, CustomUserCreationForm
@@ -46,3 +46,7 @@ def user_register(request):
         form = CustomUserCreationForm()
 
     return render(request, "register.html", {"form": form})
+
+def user_logout(request):
+    logout(request)
+    return redirect('homepage')
